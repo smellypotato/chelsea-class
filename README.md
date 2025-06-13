@@ -19,7 +19,8 @@ We follow a strict pull request workflow to help you become familiar with indust
 5. When ready, create a pull request to the main branch
 6. Your code will be reviewed and approved if it meets the requirements
 7. Feel free to add comments to your PR if you have questions about your implementation
-8. Don't worry if you can't complete all questions - uncompleted questions will be moved to the next week
+8. Estimate the time to complete the questions when you merge
+9. Don't worry if you can't complete all questions - uncompleted questions will be moved to the next week
 
 ## Getting Started
 
