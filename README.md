@@ -35,6 +35,7 @@ While working on exercises:
 - Try to solve problems independently first
 - Feel free to search for solutions on Stack Overflow or other programming resources
 - Ask for assistant through messages. Be concise about the problem you are facing
+- If the question requirements are not clear, don't hesitate to ask for clarification
 - Avoid using AI assistants to maintain the learning experience
 
 Good luck with your programming journey! Happy coding! 🚀 
