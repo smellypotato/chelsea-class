@@ -2,7 +2,7 @@
 Question 1: String Character Output
 
 Problem Description:
-Write a function that takes a string as input and outputs each character of the string on a new line. Neglect any spaces in the string.
+Write a function that takes a string as input and outputs each character of the string on a new line using a for loop. Neglect any spaces in the string.
 
 Example Usage:
 printCharacters("Hello World");
