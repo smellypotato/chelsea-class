@@ -37,4 +37,15 @@ if (inputString === undefined) {
 // Function to reverse a string
 function reverseString(str) {
     // TODO: Implement your solution here
+    let reversed_str = "";
+    if (str) {
+        for (let i = str.length - 1; i >= 0; i--) { // 9 8 7 6 5
+            reversed_str += str[i];
+        }
+    }
+    return "Original string: " + str + "\n" + "Reversed string: " + reversed_str
+
 }
+
+const result = reverseString(inputString);
+console.log(result);
