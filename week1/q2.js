@@ -26,4 +26,16 @@ if (inputString === undefined) {
 // Function to count vowels in a string
 function countVowels(str) {
     // TODO: Implement your solution here
+    if (!str) return;
+    let count = 0;
+    lowercase_str = str.toLowerCase();
+    for (let i = 0; i < str.length; i++) {
+        if (["a", "e", "i", "o", "u"].includes(lowercase_str[i])) {
+            count += 1
+        }
+    }
+    return count;
 }
+
+const count_result = countVowels(inputString);
+console.log(count_result);
