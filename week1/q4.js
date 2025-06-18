@@ -41,40 +41,12 @@ if (string1 === undefined || string2 === undefined) {
 function isSubstring(str1, str2) {
     // TODO: Implement your solution here
 
-    const str1_length = str1.split(" ").length;
-    const str2_length = str2.split(" ").length;
-    const str1_array = str1.split(" ");
-    const str2_array = str2.split(" ");
-    let substring = [];
-    for (let x = 0; x < str1_length; x++) {
-        for (let y = 0; y < str2_length; y++) {
-            if (str1_array[x] === str2_array[y]) {
-                substring.push(str1_array[x]);
-            } 
-        }
+    if (str1.includes(str2)) {
+        return `Result: "${str2}" is a substring of "${str1}"`;
+    } else if (str2.includes(str1)) {
+        return `Result: "${str1}" is a substring of "${str2}"`;
     }
-
-    const substrings = substring.map((sub) => '"' + sub + '"');
-    const substring_part = substrings.join(", ");
-    // const s
-    // console.log(`String 1: ${substrings.join(", ")}`);
-    if (substring.length === 0) {
-        return `Result: Neither string is a substring of the other`;
-    }
-
-    if (str1_length > str2_length) {
-        if (substring.length > 1) {
-            return `Result: ${substring_part} are substrings of "${str1}"`;
-        }
-        return `Result: "${substring}" is a substring of "${str1}"`;
-    } else if (str2_length > str1_length) {
-        if (substring.length > 1) {
-            return `Result: ${substring_part} are substrings of "${str2}"`;
-        }
-        return `Result: "${substring}" is a substring of "${str2}"`;
-    } else {
-        return `Result: Neither string is a substring of the other`;
-    }
+    return `Result: Neither string is a substring of the other`;
 }
 
 const result = isSubstring(string1, string2);
