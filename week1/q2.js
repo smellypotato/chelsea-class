@@ -25,5 +25,23 @@ if (inputString === undefined) {
 
 // Function to count vowels in a string
 function countVowels(str) {
-    // TODO: Implement your solution here
+    // if (!str) return;
+    {/*
+        Remark for line 28:
+        Empty str already handled at line 21, no need to check again.
+        Also, If return with no value, the function could return undefined. That might casuse problem
+        if other code expect the function have a specific return type.
+    */}
+
+    let count = 0;
+    lowercase_str = str.toLowerCase();
+    for (let i = 0; i < str.length; i++) {
+        if (["a", "e", "i", "o", "u"].includes(lowercase_str[i])) {
+            count += 1
+        }
+    }
+    return count;
 }
+
+const count_result = countVowels(inputString);
+console.log(count_result);
