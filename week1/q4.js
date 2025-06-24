@@ -40,4 +40,14 @@ if (string1 === undefined || string2 === undefined) {
 // Function to check if one string is a substring of another
 function isSubstring(str1, str2) {
     // TODO: Implement your solution here
+
+    if (str1.includes(str2)) {
+        return `Result: "${str2}" is a substring of "${str1}"`;
+    } else if (str2.includes(str1)) {
+        return `Result: "${str1}" is a substring of "${str2}"`;
+    }
+    return `Result: Neither string is a substring of the other`;
 }
+
+const result = isSubstring(string1, string2);
+console.log(result);
