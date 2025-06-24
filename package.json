@@ -1,0 +1,12 @@
+{
+  "name": "chelsea-class",
+  "version": "1.0.0",
+  "description": "Welcome to your programming journey! This repository is designed to track your progress and learning in programming through practical exercises and collaborative development practices.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test-runner.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
