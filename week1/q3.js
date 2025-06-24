@@ -38,13 +38,12 @@ if (inputString === undefined) {
 function reverseString(str) {
     // TODO: Implement your solution here
     let reversed_str = "";
-    if (str) {
-        for (let i = str.length - 1; i >= 0; i--) { // 9 8 7 6 5
-            reversed_str += str[i];
-        }
+    // if (str) { // if block is redundant as empty str is already handled at line 32.
+    for (let i = str.length - 1; i >= 0; i--) { // 9 8 7 6 5
+        reversed_str += str[i];
     }
+    // }
     return "Original string: " + str + "\n" + "Reversed string: " + reversed_str
-
 }
 
 const result = reverseString(inputString);
