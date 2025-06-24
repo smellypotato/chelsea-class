@@ -33,9 +33,6 @@ const inputString = process.argv[2];
 if (inputString === undefined) {
     console.log("Please provide a string as a command line argument");
     process.exit(1);
-} else if (inputString === "") {
-    console.log("no output for empty string");
-    process.exit(2);
 }
 
 /*
@@ -47,7 +44,6 @@ and exits, never execute the empty string case.
 
 // Function to print each character of a string on a new line
 function printCharacters(str) {
-    // TODO: Implement your solution here
     for (char of str) {
         if (char === " ") continue
         console.log(char);
