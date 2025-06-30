@@ -17,7 +17,16 @@ node q4.js "[1,1,2]"
 */
 
 function removeDuplicates(nums) {
-    // TODO: Implement your solution here
+    let first_seen_num = nums[0];
+	for (let i = 1; i < nums.length; i++) {
+        if (nums[i] !== first_seen_num) {
+            first_seen_num = nums[i];
+        } else {
+            nums.splice(i,1);
+            i--;
+        }
+	}
+    return nums.length;
 }
 
 // Export the function for testing

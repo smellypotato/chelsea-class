@@ -28,8 +28,38 @@ node q4.js "first string" "second string"
 */
 
 function isSubstring(str1, str2) {
-    // TODO: Implement your solution here
+    let at_least_one_chr_match = false;
+    let first_match_index = undefined;
+    let first_match_found = false;
+
+    for (let x = 0; x < str1.length; x++) {
+        for (let y = 0; y < str2.length; y++) {
+            if (str1[x] === str2[y]) {
+                if (!first_match_found) {
+                    at_least_one_chr_match = true;
+                    first_match_index = y;
+                    first_match_found = true;
+                }
+            }
+        }
+    }
+        
+    if (at_least_one_chr_match) {
+        for (let x = 0; x < str1.length; x++) {
+            for (let y = first_match_index; y < str2.length; y++) {
+                if (str1[x] !== str2[y+x]) {
+                    return "Neither string is a substring of the other";
+                } else {
+                    break;
+                }
+            }
+        }
+        return `${str1} is a substring of ${str2}`;
+    } else {
+        return "Neither string is a substring of the other";
+    }
 }
+
 
 // Export the function for testing
 module.exports = { isSubstring };
