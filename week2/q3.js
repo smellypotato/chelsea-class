@@ -28,7 +28,14 @@ node q3.js "[2,7,11,15]" 9
 */
 
 function twoSum(nums, target) {
-    // TODO: Implement your solution here
+    for (let x = 0 ; x < nums.length; x ++) {
+        for (let y = x+1 ; y < nums.length ; y++ ) {
+            if (nums[x] + nums[y] === target) {
+                return ([x, y]);
+            }
+        }
+    }
+    return [];
 }
 
 // Export the function for testing
