@@ -24,10 +24,20 @@ node q5.js "['a','b','c','d']" 'c'
 */
 
 function rotateArray(arr, target) {
-    // TODO: Implement your solution here
+    if (!arr.includes(target)) return false;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[0] !== target) {
+            const rotate_value = arr[0];
+            arr.splice(0, 1);
+            arr.push(rotate_value);
+            console.log(JSON.stringify(arr));
+        } else {
+            return true;
+        }
+    }
 }
 
-// Export the function for testing
 module.exports = { rotateArray };
 
 // Command line execution (only run if this file is executed directly)
@@ -40,8 +50,8 @@ if (require.main === module) {
     }
     let arr;
     try {
-        arr = JSON.parse(arrArg);
-        if (!Array.isArray(arr)) throw new Error();
+        const formateValidArrArg = arrArg.replace(/'/g, '"');
+        arr = JSON.parse(formateValidArrArg);
     } catch {
         console.log("First argument must be a valid array, e.g. ['a','b','c']");
         process.exit(1);
