@@ -28,38 +28,39 @@ node q4.js "first string" "second string"
 */
 
 function isSubstring(str1, str2) {
-    let at_least_one_chr_match = false;
-    let first_match_index = undefined;
-    let first_match_found = false;
+    let hasSubString = false;
+    let longStr = undefined;
+    let shortStr = undefined;
 
-    for (let x = 0; x < str1.length; x++) {
-        for (let y = 0; y < str2.length; y++) {
-            if (str1[x] === str2[y]) {
-                if (!first_match_found) {
-                    at_least_one_chr_match = true;
-                    first_match_index = y;
-                    first_match_found = true;
-                }
+    if (str1.length > str2.length) {
+        longStr = str1;
+        shortStr = str2;
+    } else {
+        longStr = str2;
+        shortStr = str1;
+    }
+    const match_value = shortStr[0];
+
+    for (let x = 0; x < longStr.length; x++) {
+        let temp_value = "";
+        if (longStr[x] === match_value && x <= longStr.length-shortStr.length) {
+            for (let y = 0; y < shortStr.length; y++) {
+                temp_value += longStr[y+x];
+            }
+
+            if (temp_value === shortStr) {
+                hasSubString = true;
+                break;
             }
         }
     }
-        
-    if (at_least_one_chr_match) {
-        for (let x = 0; x < str1.length; x++) {
-            for (let y = first_match_index; y < str2.length; y++) {
-                if (str1[x] !== str2[y+x]) {
-                    return "Neither string is a substring of the other";
-                } else {
-                    break;
-                }
-            }
-        }
-        return `${str1} is a substring of ${str2}`;
+
+    if (hasSubString) {
+        return `${shortStr} is a substring of ${longStr}`
     } else {
         return "Neither string is a substring of the other";
     }
 }
-
 
 // Export the function for testing
 module.exports = { isSubstring };
