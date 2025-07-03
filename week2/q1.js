@@ -34,50 +34,30 @@ const inputValidation = (input) => {
 // Function to increment the large integer by one
 function plusOne(digits) {
     let res = [];
-    for (let i = 0; i < digits.length + 1; i++) {
-        res.push(0);
-    }
-
-    let end_adding = false;
-    let add_zero_or_one = 0;
-    for (let i = res.length-1; i > 0; i--) { 
-        if (end_adding === false) {
-            if (digits[i-1] === 9 && digits.length === 1) {
-                res[i] = 0; // res 3
-                res[0] = 1;
-                break;
-            } else if (digits[i-1] === 9) { // if digit 2 is 9 -> res 3 -> 0
-                res[i] = 0; // res 3
-                add_zero_or_one = 1;
-                end_adding = true;
+    let reverse_num = [];
+    let stop_add_one = false
+    for (let i = digits.length - 1; i >= 0; i--) {
+        if (stop_add_one === false) {
+            if (digits[i] === 9) {
+                reverse_num.push(0)
             } else {
-                res[i] = digits[i-1] + 1; // not 9 -> res 3 -> digit 3
-                end_adding = true;
+                reverse_num.push(digits[i] + 1)
+                stop_add_one = true;
             }
         } else {
-            if ( digits[i-1] === 9 && add_zero_or_one === 1) {
-                res[i] = 0;
-                add_zero_or_one = 1;
-                res[i-1] = 1;
-                end_adding = true;
-            } else if (digits[i-1] < 9 && add_zero_or_one === 1) {
-                res[i] = digits[i-1] + 1;
-                add_zero_or_one = 0;
-                end_adding = true;
-            } else {
-                res[i] = digits[i-1]
-            }
+            reverse_num.push(digits[i])
         }
-
-        if (i === 0) {
-            break;
-        }
+    }
+    
+    for (let i = reverse_num.length - 1; i >= 0; i--) {
+        res.push(reverse_num[i]);
     }
 
     if (res[0] === 0) {
-        res.splice(0,1)
+        res.unshift(1);
+        return res;
     }
-    return res
+    return res;
 }
 
 // Export the function for testing
@@ -97,5 +77,7 @@ if (require.main === module) {
 
     console.log(`Input: [${input.join(',')}]`);
     const result = plusOne([...input]); // Create a copy to avoid modifying the original
+    console.log(input, "input");
+    console.log(result, "result");
     console.log(`Result: [${result.join(',')}]`);
 }
