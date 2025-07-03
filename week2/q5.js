@@ -29,7 +29,8 @@ function rotateArray(arr, target) {
     for (let i = 0; i < arr.length; i++) {
         if (arr[0] !== target) {
             const rotate_value = arr[0];
-            arr.splice(0, 1);
+            // arr.splice(0, 1);
+            arr.shift(); // Use .shift() to remove the first element because it’s simpler; .splice() is better suited for removing elements at other indexes.
             arr.push(rotate_value);
             console.log(JSON.stringify(arr));
         } else {
