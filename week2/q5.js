@@ -23,15 +23,19 @@ To test your solution:
 node q5.js "['a','b','c','d']" 'c'
 */
 
+
+/*
+Learning Points:
+1. Use .shift() to remove the first element because it’s simpler; .splice() is better suited for removing elements at other indexes.
+2. Can group two menthod at one line of code, instea of writing arr.shift() and arr.push(rotate_value) separately.
+*/
+
 function rotateArray(arr, target) {
     if (!arr.includes(target)) return false;
 
     for (let i = 0; i < arr.length; i++) {
         if (arr[0] !== target) {
-            const rotate_value = arr[0];
-            // arr.splice(0, 1);
-            arr.shift(); // Use .shift() to remove the first element because it’s simpler; .splice() is better suited for removing elements at other indexes.
-            arr.push(rotate_value);
+            arr.push(arr.shift());
             console.log(JSON.stringify(arr));
         } else {
             return true;
