@@ -27,11 +27,14 @@ To test your solution:
 node q4.js "first string" "second string"
 */
 
+/* Learning Points
+1. let longStr; By default, it already is undefined. No need to write let longStr = undefined;
+*/
 function isSubstring(str1, str2) {
-    let hasSubString = false;
-    let longStr = undefined;
-    let shortStr = undefined;
-
+    // let longStr = undefined;
+    // let shortStr = undefined;
+    let longStr;
+    let shortStr;
     if (str1.length > str2.length) {
         longStr = str1;
         shortStr = str2;
@@ -39,27 +42,13 @@ function isSubstring(str1, str2) {
         longStr = str2;
         shortStr = str1;
     }
-    const match_value = shortStr[0];
-
-    for (let x = 0; x < longStr.length; x++) {
-        let temp_value = "";
-        if (longStr[x] === match_value && x <= longStr.length-shortStr.length) {
-            for (let y = 0; y < shortStr.length; y++) {
-                temp_value += longStr[y+x];
-            }
-
-            if (temp_value === shortStr) {
-                hasSubString = true;
-                break;
-            }
+    
+    for (let x = 0; x <= longStr.length - shortStr.length; x++) {
+        if (longStr.slice(x, x + shortStr.length) === shortStr) {
+            return `${shortStr} is a substring of ${longStr}`;
         }
     }
-
-    if (hasSubString) {
-        return `${shortStr} is a substring of ${longStr}`
-    } else {
-        return "Neither string is a substring of the other";
-    }
+    return `Neither string is a substring of the other`;
 }
 
 // Export the function for testing
