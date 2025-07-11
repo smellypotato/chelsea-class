@@ -31,10 +31,56 @@ const inputValidation = (input) => {
     if (input.length > 1 && input[0] === 0) throw new Error("Array cannot have leading zeros");
 }
 
+/*
+Learning Points:
+1. can use slice() to create a copy of the array to avoid modifying the original input. line 74
+2. The flag (carryOne) doesn't have to be limited to true or false; it can hold a value (like 1) and be used directly. line 75
+3. I can make a copy of the input array and update it in place, empty res array and reverse_num is not needed. line 44
+*/
+
+// My solution
 // Function to increment the large integer by one
 function plusOne(digits) {
-    // TODO: Implement your solution here
+    let res = digits.slice();
+    // let res = [];
+    // let reverse_num = [];
+    let stop_add_one = false
+    for (let i = digits.length - 1; i >= 0; i--) {
+        if (stop_add_one === false) {
+            if (digits[i] === 9) {
+                // reverse_num.push(0)
+                res[i] = 0;
+            } else {
+                // reverse_num.push(digits[i] + 1)
+                res[i] = digits[i] + 1;
+                stop_add_one = true;
+            }
+        } else {
+            // reverse_num.push(digits[i])
+            res[i] = digits[i];
+        }
+    }
+
+    // for (let i = reverse_num.length - 1; i >= 0; i--) {
+    //     res.push(reverse_num[i]);
+    // }
+
+    if (res[0] === 0) res.unshift(1);
+    return res;
 }
+
+// Henry's solution
+// function plusOne(digits) {
+//     let res = digits.slice();
+//     let carryOne = 1;
+//     for (let i = res.length - 1; i >= 0; i--) {
+//         res[i] += carryOne;
+//         carryOne = Math.floor(res[i] / 10);
+//         res[i] %= 10;
+//     }
+//     if (carryOne === 1) res.unshift(carryOne);
+//     return res
+// }
 
 // Export the function for testing
 module.exports = { plusOne };
@@ -51,7 +97,9 @@ if (require.main === module) {
         process.exit(1);
     }
 
-    console.log(`Input: ${input.join(',')}]`);
+    console.log(`Input: [${input.join(',')}]`);
     const result = plusOne([...input]); // Create a copy to avoid modifying the original
+    console.log(input, "input");
+    console.log(result, "result");
     console.log(`Result: [${result.join(',')}]`);
 }
