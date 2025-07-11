@@ -14,7 +14,7 @@ We follow a strict pull request workflow to help you become familiar with indust
 ### Exercise Process
 1. After each lesson, coding questions will be added to the main branch
 2. You'll be notified when new questions are available
-3. Create a new branch from the specific commit containing the question
+3. Checkout the branch for a specific question
 4. Work on your solution in your branch
 5. When ready, create a pull request to the main branch
 6. Your code will be reviewed and approved if it meets the requirements
