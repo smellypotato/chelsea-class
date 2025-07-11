@@ -22,6 +22,8 @@ We follow a strict pull request workflow to help you become familiar with indust
 8. Estimate the time to complete the questions when you merge
 9. Don't worry if you can't complete all questions - uncompleted questions will be moved to the next week
 
+For reactjs exercise, please see README.md in corresponding folder
+
 ## Testing Your Solutions
 
 ### Automated Testing System
