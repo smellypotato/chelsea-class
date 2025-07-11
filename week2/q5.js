@@ -23,11 +23,26 @@ To test your solution:
 node q5.js "['a','b','c','d']" 'c'
 */
 
+
+/*
+Learning Points:
+1. Use .shift() to remove the first element because it’s simpler; .splice() is better suited for removing elements at other indexes.
+2. Can group two menthod at one line of code, instea of writing arr.shift() and arr.push(rotate_value) separately.
+*/
+
 function rotateArray(arr, target) {
-    // TODO: Implement your solution here
+    if (!arr.includes(target)) return false;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[0] !== target) {
+            arr.push(arr.shift());
+            console.log(JSON.stringify(arr));
+        } else {
+            return true;
+        }
+    }
 }
 
-// Export the function for testing
 module.exports = { rotateArray };
 
 // Command line execution (only run if this file is executed directly)
@@ -40,8 +55,8 @@ if (require.main === module) {
     }
     let arr;
     try {
-        arr = JSON.parse(arrArg);
-        if (!Array.isArray(arr)) throw new Error();
+        const formateValidArrArg = arrArg.replace(/'/g, '"');
+        arr = JSON.parse(formateValidArrArg);
     } catch {
         console.log("First argument must be a valid array, e.g. ['a','b','c']");
         process.exit(1);
