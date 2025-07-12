@@ -17,15 +17,14 @@ node q4.js "[1,1,2]"
 */
 
 function removeDuplicates(nums) {
-    let first_seen_num = nums[0];
-	for (let i = 1; i < nums.length; i++) {
-        if (nums[i] !== first_seen_num) {
-            first_seen_num = nums[i];
+    let i = 0;
+    while (i < nums.length) {
+        if (nums[i] === nums[i + 1]) {
+            nums.splice(i, 1);
         } else {
-            nums.splice(i,1);
-            i--;
+            i++;
         }
-	}
+    }
     return nums.length;
 }
 
