@@ -34,7 +34,15 @@ const inputValidation = (char, size) => {
 }
 
 function triangle(char, size) {
-    // TODO: Implement your solution here
+    const res = [];
+    let row_output = char;
+    for (let i = 0; i < size; i++) {
+        if (i > 0) {
+            row_output += " " + char;
+        }
+        res.push(row_output);
+    }
+    return res;
 }
 
 // Export the function for testing
