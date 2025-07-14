@@ -34,7 +34,17 @@ const inputValidation = (char, size) => {
 }
 
 function inversedTriangle(char, size) {
-    // TODO: Implement your solution here
+    const res = [];
+
+    for (let x = size; x > 0; x--) {
+        let row_output = "";
+        for (let y = x - 1; y > 0; y--) {
+            row_output += char + " ";
+        }
+        row_output += char;
+        res.push(row_output);
+    }
+    return res;
 }
 
 // Export the function for testing
@@ -57,4 +67,4 @@ if (require.main === module) {
     const result = inversedTriangle(char, size);
     console.log("Result:");
     result.forEach(row => console.log(row));
-} 
+}
