@@ -37,12 +37,12 @@ function inversedTriangle(char, size) {
     const res = [];
 
     for (let x = size; x > 0; x--) {
-        let row_output = "";
-        for (let y = x - 1; y > 0; y--) {
-            row_output += char + " ";
+        let row_output = [];
+        for (let y = x; y > 0; y--) {
+            row_output.push(char);
         }
-        row_output += char;
-        res.push(row_output);
+        const formatted_row_output = row_output.join(" ");
+        res.push(formatted_row_output)
     }
     return res;
 }
