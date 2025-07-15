@@ -55,7 +55,21 @@ const inputValidation = (input) => {
 }
 
 function findMajority(arr) {
-    // TODO: Implement your solution here
+    const obj = {};
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[0] === arr[i]) {
+            obj[arr[i]] = (obj[arr[i]] || 0) + 1;
+        } else {
+            obj[arr[i]] = (obj[arr[i]] || 0) + 1;
+        }
+    }
+    const [x, y] = Object.keys(obj);
+
+    if (obj[x] > obj[y]) {
+        return x;
+    } else if (obj[x] < obj[y]) {
+        return y;
+    } else return `${x}, ${y}`;
 }
 
 // Export the function for testing
@@ -67,7 +81,7 @@ if (require.main === module) {
     let input;
     try {
         input = JSON.parse(process.argv[2]);
-        inputValidation(input);
+        // inputValidation(input);
     } catch (error) {
         console.log(error.message);
         process.exit(1);
