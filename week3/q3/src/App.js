@@ -1,7 +1,27 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
-
 function App() {
+  const [datetime, setDatetime] = useState("");
+  const [timerInSecond, setTimerInSecond] = useState(0);
+  const [timer, setTimer] = useState("00:00:00");
+
+  function formateTime(seconds) {
+    const secs = String(seconds % 60).padStart(2, "0");
+    const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2,"0");
+    const hrs = String(Math.floor(seconds / 3600)).padStart(2, "0");
+    return `${hrs}:${mins}:${secs}`;
+  }
+
+  useEffect(()=> {
+    setDatetime(new Date());
+    
+    let secondsPassed = 0;
+    setInterval(()=> {
+      secondsPassed++;
+      setTimerInSecond(secondsPassed);
+      setTimer(formateTime(secondsPassed));
+    }, 1000);
+  },[])
   return (
     <div className="App">
       <header className="App-header">
@@ -16,10 +36,13 @@ function App() {
         <div className="instructions">
           <h3>Instructions:</h3>
           <ol>
-            <li>1. Write a timer that show the time passed since the page is loaded.</li>
-            <li>2. The timer should display in format HH:MM:SS</li>
-            <li>3. Also display the page loaded Date and time using Date().</li>
-            <li>4. Let the page idle for a couple hours. Check if the time passed is correct (compare expected passed time to page loaded time + timer)</li>
+            <li>Write a timer that show the time passed since the page is loaded.</li>
+            <div className="answer">{timerInSecond}</div>
+            <li>The timer should display in format HH:MM:SS</li>
+            <div className="answer">{timer}</div>
+            <li>Also display the page loaded Date and time using Date().</li>
+            <div className="answer">{datetime.toLocaleString()}</div>
+            <li>Let the page idle for a couple hours. Check if the time passed is correct (compare expected passed time to page loaded time + timer)</li>
           </ol>
         </div>
       </header>
