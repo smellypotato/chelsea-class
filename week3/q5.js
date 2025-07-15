@@ -37,7 +37,12 @@ const inputValidation = (input) => {
 }
 
 function hasLoop(arr) {
-    // Implement your solution here
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === -1 || arr[i] >= arr.length ) {
+            return false;
+        }
+    }
+    return true;
 }
 
 module.exports = { hasLoop };
