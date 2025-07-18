@@ -37,12 +37,29 @@ const inputValidation = (input) => {
 }
 
 function hasLoop(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === -1 || arr[i] >= arr.length ) {
-            return false;
+    let next_index = 0;
+    let index_array = [0]
+    let i = 0;
+    while (i < arr.length) {
+        for (let x = i; x < arr.length; x++) {
+            if (next_index === -1) {
+                next_index = i + 1;
+                index_array.push(next_index);
+                break;
+            } else {
+                next_index = arr[next_index];
+                index_array.push(next_index);
+            }
+
+            const unique_index_array = [...new Set(index_array)];
+            const last_index = index_array[index_array.length -1];
+            if ((unique_index_array.length !== index_array.length && last_index >= 0 && last_index < arr.length)) {
+                return true;
+            }
         }
+        i++;
     }
-    return true;
+    return false;
 }
 
 module.exports = { hasLoop };
@@ -59,4 +76,4 @@ if (require.main === module) {
     console.log(`Input: [${input.join(',')}]`);
     const result = hasLoop([...input]);
     console.log(`Result: ${result}`);
-} 
+}
