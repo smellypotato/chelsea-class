@@ -57,11 +57,7 @@ const inputValidation = (input) => {
 function findMajority(arr) {
     const obj = {};
     for (let i = 0; i < arr.length; i++) {
-        if (arr[0] === arr[i]) {
             obj[arr[i]] = (obj[arr[i]] || 0) + 1;
-        } else {
-            obj[arr[i]] = (obj[arr[i]] || 0) + 1;
-        }
     }
     const [x, y] = Object.keys(obj);
 
