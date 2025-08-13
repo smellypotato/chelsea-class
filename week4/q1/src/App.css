@@ -17,8 +17,7 @@
   background-color: #3a3f4b;
   padding: 20px 0;
   border-radius: 8px;
-  /* max-width: 500px; */
-  width: 50%;
+  width: 100%; 
 }
 
 .instructions {
@@ -37,4 +36,10 @@
 
 .instructions li {
   margin: 8px 0;
+}
+
+.btns {
+  display:flex;
+  gap: 10px;
+  padding: 10px 0px;
 }
