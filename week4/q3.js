@@ -56,15 +56,15 @@ const inputValidation = (arr) => {
 
 function countLoops(arr) {
     const nested_list = []; 
-    const appeared_next_index = new Set();
+    const seen_set = new Set();
     for (let i = 0; i < arr.length; i++) {
         let iterate_list = [];
         let next = arr[i];
         
-        if (!appeared_next_index.has(next)) {
+        if (!seen_set.has(next)) {
             while (next !== -1 && next < arr.length) {
                 console.log({i});
-                appeared_next_index.add(next)
+                seen_set.add(next)
                 if (!iterate_list.includes(next)) {
                     iterate_list.push(next);
                     next = arr[next];
