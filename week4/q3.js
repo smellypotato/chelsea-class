@@ -55,47 +55,32 @@ const inputValidation = (arr) => {
 }
 
 function countLoops(arr) {
-    const nested_list = [];
+    const nested_list = []; 
+    const appeared_next_index = new Set();
     for (let i = 0; i < arr.length; i++) {
-        let has_visited = false;
         let iterate_list = [];
         let next = arr[i];
-        iterate_list.push(i);
         
-        while (!has_visited && next !== -1 && next < arr.length) {
-            if (!iterate_list.includes(next)) {
-                iterate_list.push(next);
-                next = arr[next];
-            } else {
-                iterate_list.push(next)
-                has_visited = true;
-            }
-        }
-
-        const uniqe_array = [...new Set(iterate_list)]
-        if (uniqe_array.length !== iterate_list.length) {
-            nested_list.push(iterate_list);
-        }
-    }
-    console.log({nested_list}, "all (with duplicate loop)");
-
-    if (nested_list.length === 0) {
-        return 0
-    } else {
-        for (let x = 0; x < nested_list.length; x++ ) {
-            let reference_arr = nested_list[x];
-            for (let y = x+1; y < nested_list.length; y++) {
-                const hasDuplicateLoop = reference_arr.some(value =>nested_list[y].includes(value));
-                console.log({reference_arr}, `each_compare_row:${nested_list[y]}`, `matched: ${hasDuplicateLoop}`);
-                if (hasDuplicateLoop) {
-                    nested_list.splice(y, 1);
-                    y--;
+        if (!appeared_next_index.has(next)) {
+            while (next !== -1 && next < arr.length) {
+                console.log({i});
+                appeared_next_index.add(next)
+                if (!iterate_list.includes(next)) {
+                    iterate_list.push(next);
+                    next = arr[next];
+                } else {
+                    iterate_list.push(next)
+                    break;
                 }
             }
+            const uniqe_array = [...new Set(iterate_list)]
+            if (uniqe_array.length !== iterate_list.length) {
+                nested_list.push(iterate_list);
+            }
         }
-        // console.log({nested_list}, "new: without duplicate loop");
-        return nested_list.length;
     }
+
+    return nested_list.length
 }
 
 // Export the function for testing
